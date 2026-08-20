@@ -1,0 +1,21 @@
+<Process name="PCB Assembly">
+  <StartEvent id="0" name="Start" />
+  <Task id="1" name="Take PCB to capacitor station" />
+  <XORSplit id="2" name="XORSplit" />
+  <IntermediateEvent id="3" name="PCB arrived at the capacitor station" />
+  <Task id="4" name="Solder capacitor" />
+  <IntermediateEvent id="5" name="PCB didn't arrive at the capacitor station" />
+  <Task id="6" name="Set alarm" />
+  <XORJoin id="7" name="XORJoin" />
+  <EndEvent id="8" name="End" />
+
+  <Edge id="9" source="0" target="1" />
+  <Edge id="10" source="1" target="2" />
+  <Edge id="11" source="2" target="3" />
+  <Edge id="12" source="2" target="5" />
+  <Edge id="13" source="3" target="4" />
+  <Edge id="14" source="4" target="7" />
+  <Edge id="15" source="5" target="6" />
+  <Edge id="16" source="6" target="7" />
+  <Edge id="17" source="7" target="8" />
+</Process>
