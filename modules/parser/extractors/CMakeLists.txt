@@ -1,1 +1,7 @@
 add_subdirectory(process_extractor)
+add_subdirectory(start_event_extractor)
+add_subdirectory(end_event_extractor)
+add_subdirectory(task_extractor)
+add_subdirectory(intermediate_event_extractor)
+add_subdirectory(directed_edge_extractor)
+add_subdirectory(operator_extractor)

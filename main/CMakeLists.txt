@@ -4,6 +4,9 @@ add_executable(main
 
 target_link_libraries(main
 PUBLIC
-	rapidxml::rapidxml
 	spdlog::spdlog
+
+	argument_parser
+	file_reader
+	process_extractor
 )

@@ -1,1 +1,3 @@
+add_subdirectory(argument_parser)
+add_subdirectory(file_reader)
 add_subdirectory(parser)

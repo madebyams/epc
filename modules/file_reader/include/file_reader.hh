@@ -6,7 +6,10 @@
 
 class file_reader {
 public:
-  file_reader(argument_parser& argument_parser);
+  file_reader();
+
+  std::string
+  read_file(std::string path);
+
 private:
-  std::string read_file(std::string path);
 };

@@ -1,4 +1,7 @@
 #pragma once
+
+#include <argparse/argparse.hpp>
+
 class argument_parser {
 public:
   argparse::ArgumentParser parser;

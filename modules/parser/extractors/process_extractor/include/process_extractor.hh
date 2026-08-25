@@ -2,7 +2,9 @@
 
 #include <string>
 
+#include "process.hh"
+
 class process_extractor {
 public:
-  void extract_process(std::string file_content);
+  process extract(std::string file_content);
 };
