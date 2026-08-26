@@ -1,6 +1,6 @@
 default:
   tags:
-    - amd64
+    - linux_amd64
 
 stages:
   - build
