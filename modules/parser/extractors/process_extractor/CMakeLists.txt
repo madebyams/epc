@@ -15,6 +15,7 @@ PUBLIC
 	intermediate_event_extractor
 	task_extractor
 	directed_edge_extractor
+	conjunctor_extractor
 
 	rapidxml::rapidxml
 	spdlog::spdlog

@@ -10,6 +10,7 @@
 #include "intermediate_event_extractor.hh"
 #include "end_event_extractor.hh"
 #include "directed_edge_extractor.hh"
+#include "conjunctor_extractor.hh"
 
 process
 process_extractor::extract(
@@ -22,6 +23,7 @@ process_extractor::extract(
   intermediate_event_extractor intermediate_event_extractor {};
   task_extractor task_extractor{};
   directed_edge_extractor directed_edge_extractor{};
+  conjunctor_extractor conjunctor_extractor{}; 
   
   doc.parse<0>(
    const_cast<char*>(file_content.c_str())
@@ -46,11 +48,24 @@ process_extractor::extract(
   }
 
   for(auto intermediate_event:
-	intermediate_event_extractor.extract(process_node)) {
-    process.nodes[intermediate_event.id] = intermediate_event;
+	intermediate_event_extractor
+	.extract(process_node)
+  ) {
+    process.nodes[intermediate_event.id] =
+      intermediate_event;
   }
 
-  directed_edge_extractor.extract(process_node);
+  process.directed_edges =
+    directed_edge_extractor.extract(process_node);
+
+  for(auto conjunctor:
+	conjunctor_extractor
+	.extract(process_node)
+  ) {
+    process.nodes[conjunctor.id] =
+      conjunctor;
+  }
   
   return process;
 }
+
