@@ -1,3 +1,5 @@
 add_subdirectory(argument_parser)
 add_subdirectory(file_reader)
-add_subdirectory(parser)
+add_subdirectory(frontend)
+add_subdirectory(ir)
+add_subdirectory(backend)
