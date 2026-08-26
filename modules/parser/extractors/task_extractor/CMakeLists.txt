@@ -11,5 +11,6 @@ target_link_libraries(task_extractor
 PUBLIC
 	rapidxml::rapidxml
 
-	parser_models
+  extractor
+  parser_models
 )

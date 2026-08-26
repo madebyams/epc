@@ -1,13 +1,13 @@
 #pragma once
 
-#include <vector>
-
 #include <rapidxml.hpp>
 
+#include "extractor.hh"
 #include "conjunctors/conjunctor.hh"
+#include "parser_context.hh"
 
-class conjunctor_extractor {
+class conjunctor_extractor : public extractor {
 public:
-  std::vector<conjunctor>
-  extract(rapidxml::xml_node<>* process_node);
+  void
+  extract(parser_context& parser_context) override;
 };

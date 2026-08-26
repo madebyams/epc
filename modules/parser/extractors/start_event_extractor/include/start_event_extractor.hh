@@ -2,12 +2,14 @@
 
 #include <rapidxml.hpp>
 
+#include "extractor.hh"
+#include "parser_context.hh"
 #include "events/start_event.hh"
 
-class start_event_extractor {
+class start_event_extractor : public extractor {
 public:
-  start_event
+  void
   extract(
-   rapidxml::xml_node<>* process_node
+   parser_context& parser_context
   );
 };

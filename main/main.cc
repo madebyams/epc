@@ -29,7 +29,6 @@ main(
 
   process process = process_extractor
     .extract(content);
-
   
   return 0;
 }

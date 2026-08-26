@@ -1,0 +1,12 @@
+default:
+  tags:
+    - amd64
+
+stages:
+  - build
+
+build:
+  stage: linux
+  image: ubuntu:22.04
+  cache:
+    

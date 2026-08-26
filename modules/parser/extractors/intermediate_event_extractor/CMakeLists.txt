@@ -9,7 +9,8 @@ PUBLIC
 
 target_link_libraries(intermediate_event_extractor
 PUBLIC
-	rapidxml::rapidxml
+  rapidxml::rapidxml
 
+  extractor
 	parser_models
 )

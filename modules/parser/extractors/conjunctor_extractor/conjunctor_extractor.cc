@@ -4,14 +4,14 @@
 #include "conjunctors/join_conjunctor.hh"
 
 
-std::vector<conjunctor>
+void
 conjunctor_extractor::extract(
-  rapidxml::xml_node<>* process_node
+  parser_context& parser_context
 ) {
-  std::vector<conjunctor> conjunctors{};
-  
   for(auto conjunctor_node =
-	process_node->first_node("XORSplit");
+      parser_context
+      .process_node
+        ->first_node("XORSplit");
       conjunctor_node;
       conjunctor_node =
 	conjunctor_node->next_sibling("XORSplit")
@@ -26,14 +26,18 @@ conjunctor_extractor::extract(
       conjunctor_node
       ->first_attribute("name")
       ->value();
-
-    conjunctors.
-      push_back(xor_split);
+    
+    parser_context
+      .result
+      .nodes[xor_split.id] =
+      xor_split;
   }
 
 
   for(auto conjunctor_node =
-	process_node->first_node("XORJoin");
+      parser_context
+      .process_node
+        ->first_node("XORJoin");
       conjunctor_node;
       conjunctor_node =
 	conjunctor_node->next_sibling("XORJoin")
@@ -49,12 +53,16 @@ conjunctor_extractor::extract(
       ->first_attribute("name")
       ->value();
 
-    conjunctors.
-      push_back(xor_join);    
+    parser_context
+      .result
+      .nodes[xor_join.id] =
+      xor_join;
   }
 
   for(auto conjunctor_node =
-	process_node->first_node("ORSplit");
+      parser_context
+      .process_node
+        ->first_node("ORSplit");
       conjunctor_node;
       conjunctor_node =
 	conjunctor_node->next_sibling("ORSplit")
@@ -70,13 +78,17 @@ conjunctor_extractor::extract(
       ->first_attribute("name")
       ->value();
 
-    conjunctors.
-      push_back(or_split);
+    parser_context
+      .result
+      .nodes[or_split.id] =
+      or_split;
   }
 
 
   for(auto conjunctor_node =
-	process_node->first_node("ORJoin");
+      parser_context
+      .process_node
+        ->first_node("ORJoin");
       conjunctor_node;
       conjunctor_node =
 	conjunctor_node->next_sibling("ORJoin")
@@ -92,12 +104,16 @@ conjunctor_extractor::extract(
       ->first_attribute("name")
       ->value();
 
-    conjunctors.
-      push_back(or_join);    
+    parser_context
+      .result
+      .nodes[or_join.id] =
+      or_join;
   }
 
   for(auto conjunctor_node =
-	process_node->first_node("ANDSplit");
+      parser_context
+      .process_node
+        ->first_node("ANDSplit");
       conjunctor_node;
       conjunctor_node =
 	conjunctor_node->next_sibling("ANDSplit")
@@ -112,14 +128,18 @@ conjunctor_extractor::extract(
       conjunctor_node
       ->first_attribute("name")
       ->value();
-
-    conjunctors.
-      push_back(and_split);
+    
+    parser_context
+      .result
+      .nodes[and_split.id] =
+      and_split;
   }
 
 
   for(auto conjunctor_node =
-	process_node->first_node("ANDJoin");
+      parser_context
+      .process_node
+        ->first_node("ANDJoin");
       conjunctor_node;
       conjunctor_node =
 	conjunctor_node->next_sibling("ANDJoin")
@@ -135,9 +155,9 @@ conjunctor_extractor::extract(
       ->first_attribute("name")
       ->value();
 
-    conjunctors.
-      push_back(and_join);    
+    parser_context
+      .result
+      .nodes[and_join.id] =
+      and_join;
   }
-  
-  return conjunctors;
 }

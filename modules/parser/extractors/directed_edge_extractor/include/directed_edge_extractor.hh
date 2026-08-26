@@ -1,11 +1,11 @@
 #pragma once
 
-#include <rapidxml.hpp>
-
+#include "parser_context.hh"
+#include "extractor.hh"
 #include "process.hh"
 
-class directed_edge_extractor {
+class directed_edge_extractor : public extractor{
 public:
-  adjacence_map
-  extract(rapidxml::xml_node<>* process_node);
+  void
+  extract(parser_context& parser_context) override;
 };

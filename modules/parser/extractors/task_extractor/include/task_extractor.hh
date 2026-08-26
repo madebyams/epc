@@ -1,15 +1,13 @@
 #pragma once
 
-#include <vector>
-
-#include <rapidxml.hpp>
-
+#include "parser_context.hh"
+#include "extractor.hh"
 #include "task.hh"
 
-class task_extractor {
+class task_extractor : public extractor {
 public:
-  std::vector<task>
+  void
   extract(
-   rapidxml::xml_node<>* process_node
+   parser_context& parser_context
   );
 };

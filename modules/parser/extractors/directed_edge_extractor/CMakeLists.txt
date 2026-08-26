@@ -9,7 +9,8 @@ PUBLIC
 
 target_link_libraries(directed_edge_extractor
 PUBLIC
-	parser_models
+  extractor
+  parser_models
 	
 	rapidxml::rapidxml
 	spdlog::spdlog

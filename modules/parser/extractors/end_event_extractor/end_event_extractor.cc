@@ -1,12 +1,12 @@
 #include "end_event_extractor.hh"
 
-end_event
+void
 end_event_extractor::extract(
-  rapidxml::xml_node<>* process_node
+  parser_context& parser_context
 ) {
   end_event end_event{};
   auto end_event_node =
-    process_node->first_node("EndEvent");
+    parser_context.process_node->first_node("EndEvent");
 
   end_event.id =
     end_event_node->first_attribute("id")->value();
@@ -14,5 +14,11 @@ end_event_extractor::extract(
   end_event.name =
     end_event_node->first_attribute("name")->value();
 
-  return end_event;
+  parser_context
+    .result
+    .end = end_event;
+
+  parser_context
+    .result
+    .nodes[end_event.id] = end_event;
 }

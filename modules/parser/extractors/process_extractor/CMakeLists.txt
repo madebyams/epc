@@ -9,7 +9,7 @@ PUBLIC
 
 target_link_libraries(process_extractor
 PUBLIC
-	parser_models
+  parser_models
 	start_event_extractor
 	end_event_extractor
 	intermediate_event_extractor

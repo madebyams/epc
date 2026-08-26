@@ -12,5 +12,6 @@ PUBLIC
 	rapidxml::rapidxml
 	spdlog::spdlog
 	
-	parser_models
+  extractor
+  parser_models
 )

@@ -2,10 +2,12 @@
 
 #include <rapidxml.hpp>
 
+#include "extractor.hh"
+#include "parser_context.hh"
 #include "events/end_event.hh"
 
-class end_event_extractor {
+class end_event_extractor : public extractor{
 public:
-  end_event
-  extract(rapidxml::xml_node<>* process_node);
+  void
+  extract(parser_context& parser_context) override;
 };

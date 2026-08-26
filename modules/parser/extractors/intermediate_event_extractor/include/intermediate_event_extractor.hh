@@ -1,15 +1,13 @@
 #pragma once
 
 #include "events/intermediate_event.hh"
+#include "extractor.hh"
+#include "parser_context.hh"
 
-#include <vector>
-
-#include <rapidxml.hpp>
-
-class intermediate_event_extractor {
+class intermediate_event_extractor : public extractor {
 public:
-  std::vector<intermediate_event>
+  void
   extract(
-   rapidxml::xml_node<>* process_node
-  );
+   parser_context& parser_context
+  ) override;
 };

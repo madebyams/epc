@@ -2,14 +2,14 @@
 
 #include <spdlog/spdlog.h>
 
-adjacence_map
+void
 directed_edge_extractor::extract(
-  rapidxml::xml_node<>* process_node
+  parser_context& parser_context
 ) {
   adjacence_map
     directed_edges {};
 
-  for(auto directed_edge_node = process_node->first_node("Edge"); directed_edge_node; directed_edge_node = directed_edge_node->next_sibling("Edge")) {
+  for(auto directed_edge_node = parser_context.process_node->first_node("Edge"); directed_edge_node; directed_edge_node = directed_edge_node->next_sibling("Edge")) {
     std::string source =
       directed_edge_node->first_attribute("source")->value();
 
@@ -20,5 +20,7 @@ directed_edge_extractor::extract(
       .push_back(target);
   }
 
-  return directed_edges;
+  parser_context
+    .result
+    .directed_edges = directed_edges;
 }
