@@ -17,7 +17,7 @@ tasks:
       mkdir -p .ci-bin
       ln -sf "$(command -v gcc-13)" .ci-bin/gcc
       ln -sf "$(command -v g++-13)" .ci-bin/g++
-      export PATH="$PWD/.ci-bin:$PATH"
+      export PATH="$HOME/.local/bin:$PWD/.ci-bin:$PATH"
       python3 -m pip install --break-system-packages --no-cache-dir "cmake>=3.30" "conan>=2.0"
       conan profile detect --force
       conan install . --build=missing
