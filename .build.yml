@@ -1,0 +1,28 @@
+image: ubuntu/jammy
+packages:
+  - build-essential
+  - software-properties-common
+  - python3
+  - python3-pip
+  - python3-venv
+  - ca-certificates
+sources:
+  - https://git.sr.ht/~itsams_wav/epc
+tasks:
+  - build: |
+      cd epc
+      export DEBIAN_FRONTEND=noninteractive
+      export CONAN_HOME="$PWD/.conan2"
+      apt-get update
+      apt-get install -y --no-install-recommends software-properties-common
+      add-apt-repository -y ppa:ubuntu-toolchain-r/test
+      apt-get update
+      apt-get install -y --no-install-recommends gcc-13 g++-13
+      update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-13 100 --slave /usr/bin/g++ g++ /usr/bin/g++-13
+      python3 -m pip install --break-system-packages --no-cache-dir "cmake>=3.30" "conan>=2.0"
+      conan profile detect --force
+      conan install . --build=missing
+      cmake --preset conan-release
+      cmake --build build/Release --parallel
+artifacts:
+  - epc/build/Release/main/main
